@@ -1,8 +1,8 @@
 const passPlayerToView = (req, res, next) => {
-    if(res.locals.player = req.session.player) {
-        return req.session.player
+    if(req.session.player) {
+        res.locals.player = req.session.player
     } else {
-        return null
+        res.locals.player = null
     }
     next()
 }

@@ -22,7 +22,7 @@ const spellsSchema = mongoose.Schema({
 const characterSchema = mongoose.Schema({
     name: {type: String, required: true},
     class: {type: String, enum: ['bard', 'cleric', 'druid', 'paladin', 'ranger', 'sorcerer', 'warlock', 'wizard'], required: true},
-    multiclass:{type: String, enum: ['none', 'bard', 'cleric', 'druid', 'paladin', 'ranger', 'sorcerer', 'warlock', 'wizard']},
+    // multiclass:{type: String, enum: ['none', 'bard', 'cleric', 'druid', 'paladin', 'ranger', 'sorcerer', 'warlock', 'wizard']},
     firstLvlSlots: {type: Number},
     secondLvlSlots: {type: Number},
     thirdvlSlots: {type: Number},

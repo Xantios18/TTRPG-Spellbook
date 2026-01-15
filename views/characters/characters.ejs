@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Characters</title>
+</head>
+<body>
+    <h1>Welcome <%= player.playerName %></h1>
+    <a class="add-character-link" href="/players/<%= player._id %>/characters/add">Create a character</a>
+    <h2>Here are all of your current characters</h2>
+    <ul>
+        <% characters.forEach((character) => { %>
+        <a href="/playes/<%= player._id %>/characters/<%= character._id %>">
+            <li><%= character.name %>: <%= character.class %></li>
+        </a>
+        <% }) %>
+    </ul>
+</body>
+</html>

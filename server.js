@@ -72,22 +72,10 @@ app.post('/sign-in', async (req, res) => {
 
 })
 
-//landing page
-
-app.use(passPlayerToView)
-
-app.get('/', (req, res) => {
-    if(req.session.player) {
-        res.redirect(`/players/${req.session.player._id}/characters`)
-    } else {
-        res.render('home.ejs')
-    }       
-})
-
 //sign up
 
-app.get('sign-up', (req, res) => {
-    app.render('sign-up.ejs')
+app.get('/sign-up', (req, res) => {
+    res.render('sign-up.ejs')
 })
 
 app.post('/sign-up', async (req, res) => {
@@ -105,7 +93,7 @@ app.post('/sign-up', async (req, res) => {
         res.redirect('/')
     } catch (error) {
         console.log(error)
-        app.redirect('/')
+        res.redirect('/')
     }
 })
 
@@ -115,6 +103,24 @@ app.get('/sign-out', (req, res) => {
     res.redirect('/')
     //don't forget to build the sign-out button in the nav bar
 })
+
+//landing page
+
+app.use(passPlayerToView)
+
+app.get('/', (req, res) => {
+    if(req.session.player) {
+        res.redirect(`/players/${req.session.player._id}/characters`)
+    } else {
+        res.render('home.ejs')
+    }       
+})
+
+
+
+
+
+
 
 
 //characters controller
