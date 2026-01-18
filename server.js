@@ -6,12 +6,16 @@ dotenv.config()
 
 const mongoose = require ('mongoose')
 
+const methodOverride = require('method-override')
+
 const session = require('express-session')
 
 const bcrypt = require('bcrypt')
 
 const Player = require('./models/player.js')
 const passPlayerToView = require('./middleware/pass-player-to-view.js')
+
+const charactersController = require('./controllers/characters.js')
 
 //------------------------------GLOBAL VARIABLES------------------------------
 const app = express()
@@ -26,14 +30,15 @@ mongoose.connection.on('connected', () => {
 
 app.use(express.urlencoded({ extended: false }))
 
-//something wrong here
+app.use(methodOverride('_method'))
+
 app.use(
     session({
         secret: process.env.SESSION_SECRET,
         resave: false,
         saveUninitialized: true,
 }))
-//fix to load page
+
 
 //------------------------------ROUTES------------------------------
 
@@ -117,7 +122,8 @@ app.get('/', (req, res) => {
 })
 
 
-
+//isSignedIn
+app.use('/player/:playerId/characters', charactersController)
 
 
 

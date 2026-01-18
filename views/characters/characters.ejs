@@ -12,7 +12,11 @@
     <ul>
         <% characters.forEach((character) => { %>
         <a href="/playes/<%= player._id %>/characters/<%= character._id %>">
-            <li><%= character.name %>: <%= character.class %></li>
+            <li><%= character.name %>: <%= character.class %>
+                <form action="/players/<%= player._id %>/characters/<%= character._id %>?_method=DELETE" method="POST">
+                    <button type="submit">Delete Character</button>
+                </form>
+            </li>
         </a>
         <% }) %>
     </ul>
