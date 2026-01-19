@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= character.name %>></title>
+    <title><%= character.name %></title>
 </head>
 <body>
     <h1><%= character.name %></h1>
@@ -65,9 +65,44 @@
     </div>
 <!-- may need to add logic to preserve expended slots. probably also want a long rest button -->
  
-    <a href="/players/<%= player._id %>/characters/<%= character._id %>/spells/add">Add spell</a>
+    <a href="/players/<%= player._id %>/characters/<%= character._id %>/addSpell">Add spell</a>
 
     <!-- spells -->
-
+    <div class="cantrips">
+        <p>Cantrips</p>
+        <ul>
+            <% character.spells.forEach((spell) => { %>
+                <% if(spell.level === 0) { %>
+                    <li>
+                        <a href="/players/<%= player._id %>/characters/<%= character._id %>/<%= spell._id %>">
+                            <%= spell.name %>
+                        </a>
+                        <!-- prepared -->
+                        <% if(spell.prepared) { %>
+                            <p>Prepared</p>
+                        <% } %>
+                        <!-- concentration -->
+                        <% if(spell.concentration) { %>
+                            <p>Concentration</p>
+                        <% } %>
+                        <!-- ritual -->
+                        <% if(spell.ritual) { %>
+                            <p>Ritual</p>
+                        <% } %>
+                        <!-- casting time -->
+                        <p>casting time: <%= spell.castingTime %></p>
+                        <!-- monetary component -->
+                        <% if(spell.monetaryComponent) { %>
+                            <p>Monetary Component: <%= spell.monetaryComponent %></p>
+                        <% } %>
+                        <!-- delete -->
+                        <form action="/players/<%= player._id %>/characters/<%= character._id %>/<%= spell._id %>?_method=DELETE" method="POST">
+                            <button type="submit">Forget Spell</button>
+                        </form>
+                    </li>
+                <% } %>
+            <% }) %>
+        </ul>
+    </div> 
 </body>
 </html>

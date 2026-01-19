@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Character</title>
+    <title>Edit <%= character.name %></title>
 </head>
 <body>
     <h1>Edit your character</h1>
-    <form action="/players/<%= player._id %>/characters" method="POST">
+    <form action="/players/<%= player._id %>/characters/<%= character._id %>?_method=PUT" method="POST">
         <!-- name -->
         <label for="name">Name:</label>
         <input type="text" name="name" id="name" value="<%= character.name %>"/>
@@ -42,7 +42,7 @@
         <input type="number" name="eigthLvlSlots" id="eigthLvlSlots" value="<%= character.eigthLvlSlots %>"/>
         <label for="ninthLvlSlots">Level 9 spell slots:</label>
         <input type="number" name="ninthLvlSlots" id="ninthLvlSlots" value="<%= character.ninthLvlSlots %>"/>
-        <button type="submit">Create Character</button>
+        <button type="submit">Edit Character</button>
     </form>
 </body>
 </html>

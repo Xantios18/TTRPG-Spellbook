@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit <%= spell.name %></title>
+</head>
+<body>
+    <h1>Spell Details</h1>
+    <form action="/players/<%= player._id %>/characters/<%= character._id %>/<%= spell._id %>?_method=PUT" method="POST">
+        <!-- name -->
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" value="spell.name"/>
+        <!-- level -->
+        <label for="level">Level:</label>
+        <input type="number" name="level" id="level" value="spell.level"/>
+        <!-- school -->
+        <label for="school">School:</label>
+        <select id="school" name="school">
+            <option value="abjuration" <%= spell.school === 'abjuration' ? "selected" : "" %>>Abjuration</option>
+            <option value="conjuration" <%= spell.school === 'conjuration' ? "selected" : "" %>>Conjuration</option>
+            <option value="divination" <%= spell.school === 'divination' ? "selected" : "" %>>Divination</option>
+            <option value="enchantment" <%= spell.school === 'enchantment' ? "selected" : "" %>>Enchantment</option>
+            <option value="evocation" <%= spell.school === 'evocation' ? "selected" : "" %>>Evocation</option>
+            <option value="illusion" <%= spell.school === 'illusion' ? "selected" : "" %>>Illusion</option>
+            <option value="necromancy" <%= spell.school === 'necromancy' ? "selected" : "" %>>Necromancy</option>
+            <option value="transmutation" <%= spell.school === 'transmutation' ? "selected" : "" %>>Transmutation</option>
+        </select>
+        <!-- prepared -->
+        <label for="prepared">Prepared:</label>
+        <input type="checkbox" name="prepared" id="prepared" <% spell.prepared ? "checked" %>/>
+        <!-- concentration -->
+        <label for="prepared">Concentration:</label>
+        <input type="checkbox" name="concentration" id="concentration" <% spell.concentration ? "checked" %>/>
+        <!-- ritual -->
+        <label for="prepared">Ritual:</label>
+        <input type="checkbox" name="ritual" id="ritual" <% spell.ritual ? "checked" %>/>
+        <!-- casting time -->
+        <label for="castingTime">Casting Time></label>
+        <select id="castingTime" name="castingTime">
+            <option value="reaction" <%= spell.castingTime === 'reaction' ? "selected" : "" %>>Reaction</option>
+            <option value="bonus-action" <%= spell.castingTime === 'bonus-action' ? "selected" : "" %>>Bonus Action</option>
+            <option value="action" <%= spell.castingTime === 'action' ? "selected" : "" %>>Action</option>
+            <option value="one-minute" <%= spell.castingTime === 'one-minute' ? "selected" : "" %>>1 Minute</option>
+            <option value="other" <%= spell.castingTime === 'other' ? "selected" : "" %>>Other</option>
+        </select>
+        <!-- verbal -->
+        <label for="verbalComponent">Verbal Component:</label>
+        <input type="checkbox" name="verbalComponent" id="verbalComponent" <% spell.verbalComponent ? "checked" %>/>
+        <!-- somatic -->
+        <label for="somaticComponent">Somatic Component:</label>
+        <input type="checkbox" name="somaticComponent" id="somaticComponent" <% spell.somaticComponent ? "checked" %>/>
+        <!-- material -->
+        <label for="materialComponent">Material Components:</label>
+        <input type="text" name="materialComponent" id="materialComponent" value="spell.materialComponent"/>
+        <!-- monetary -->
+        <label for="monetaryComponent">Monetary Components:</label>
+        <input type="text" name="monetaryComponent" id="monetaryComponent" value="spell.monetaryComponent"/>
+        <!-- duration -->
+        <label for="duration">Duration:</label>
+        <input type="text" name="duration" id="duration" value="spell.duration"/>
+        <!-- range -->
+        <label for="range">Range (in feet):</label>
+        <input type="number" name="range" id="range" value="spell.range"/>
+        <!-- effect -->
+        <label for="effect">Effects:</label>
+        <textarea name="effect" id="effect" value="spell.effect"></textarea>
+        <!-- notes -->
+        <label for="notes">Notes:</label>
+        <textarea name="notes" id="notes" value="spell.notes"></textarea>
+        <!-- submit -->
+        <button type="submit">Edit Spell</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= spell.name %></title>
+</head>
+<body>
+    <h1><%= spell.name %></h1>
+    <h2><%= spell.school %> <% spell.level === 0 ? 'cantrip' : `level ${spell.level}` %></h2>    
+    <a href="/players/<%= player._id %>/characters/<%= character._id %>/<%= spell._id %>/edit">Edit Spell</a>
+    <% if(spell.prepared) { %>
+        <p>Prepared</p>
+    <% } %>
+    <% if(spell.concentration) { %>
+        <p>Concentration</p>
+    <% } %>
+    <% if(spell.ritual) { %>
+        <p>Ritual</p>
+    <% } %>
+    <div>Components:
+        <% if(!spell.verbalComponent && !spell.somaticComponent && !spell.materialComponent && !spell.monetaryComponent) {
+            <p>None</p>
+        } %>
+        <% if(spell.verbalComponent) { %>
+            <p>Verbal</p>
+        <% } %>
+        <% if(spell.somaticComponent) { %>
+            <p>Somatic</p>
+        <% } %>
+        <% if(spell.materialComponent) { %>
+            <p>Material Components: <%= materialComponent %></p>
+        <% } %>
+        <% if(spell.monetaryComponent) { %>
+            <p>Monetary Components: <%= monetaryComponent %></p>
+        <% } %>
+    </div>
+    <p>Duration: <%= spell.duration %></p>
+    <p>range: <%= spell.range %></p>
+    <p><%= spell.effect %></p>
+    <h3>Notes:</h3>
+    <p><%= spell.notes %></p>
+</body>
+</html>

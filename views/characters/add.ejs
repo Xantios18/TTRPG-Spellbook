@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>Create your character</h1>
-    <form action="/players/<%= player._id %>/characters" method="POST">
+    <form action="/players/<%= player._id %>/characters/" method="POST">
         <!-- name -->
         <label for="name">Name:</label>
         <input type="text" name="name" id="name"/>
@@ -25,23 +25,23 @@
         </select>
         <!-- spell slots 1-9 -->
         <label for="firstLvlSlots">Level 1 spell slots:</label>
-        <input type="number" name="firstLvlSlots" id="firstLvlSlots"/>
+        <input type="number" name="firstLvlSlots" id="firstLvlSlots" value="0"/>
         <label for="secondLvlSlots">Level 2 spell slots:</label>
-        <input type="number" name="secondLvlSlots" id="secondLvlSlots"/>
+        <input type="number" name="secondLvlSlots" id="secondLvlSlots" value="0"/>
         <label for="thirdLvlSlots">Level 3 spell slots:</label>
-        <input type="number" name="thirdLvlSlots" id="thirdLvlSlots"/>
+        <input type="number" name="thirdLvlSlots" id="thirdLvlSlots" value="0"/>
         <label for="fourthLvlSlots">Level 4 spell slots:</label>
-        <input type="number" name="fourthLvlSlots" id="fourthLvlSlots"/>
+        <input type="number" name="fourthLvlSlots" id="fourthLvlSlots" value="0"/>
         <label for="fifthLvlSlots">Level 5 spell slots:</label>
-        <input type="number" name="fifthLvlSlots" id="fifthLvlSlots"/>
+        <input type="number" name="fifthLvlSlots" id="fifthLvlSlots" value="0"/>
         <label for="sixthLvlSlots">Level 6 spell slots:</label>
-        <input type="number" name="sixthLvlSlots" id="sixthLvlSlots"/>
+        <input type="number" name="sixthLvlSlots" id="sixthLvlSlots" value="0"/>
         <label for="seventhLvlSlots">Level 7 spell slots:</label>
-        <input type="number" name="seventhLvlSlots" id="seventhLvlSlots"/>
+        <input type="number" name="seventhLvlSlots" id="seventhLvlSlots" value="0"/>
         <label for="eigthLvlSlots">Level 8 spell slots:</label>
-        <input type="number" name="eigthLvlSlots" id="eigthLvlSlots"/>
+        <input type="number" name="eigthLvlSlots" id="eigthLvlSlots" value="0"/>
         <label for="ninthLvlSlots">Level 9 spell slots:</label>
-        <input type="number" name="ninthLvlSlots" id="ninthLvlSlots"/>
+        <input type="number" name="ninthLvlSlots" id="ninthLvlSlots" value="0"/>
         <button type="submit">Create Character</button>
     </form>
 </body>

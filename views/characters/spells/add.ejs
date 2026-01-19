@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Spell</title>
+</head>
+<body>
+    <h1>Spell Details</h1>
+    <form action="/players/<%= player._id %>/characters/<%= character._id %>" method="POST">
+        <!-- name -->
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name"/>
+        <!-- level -->
+        <label for="level">Level:</label>
+        <input type="number" name="level" id="level"/>
+        <!-- school -->
+        <label for="school">School:</label>
+        <select id="school" name="school">
+            <option value="abjuration">Abjuration</option>
+            <option value="conjuration">Conjuration</option>
+            <option value="divination">Divination</option>
+            <option value="enchantment">Enchantment</option>
+            <option value="evocation">Evocation</option>
+            <option value="illusion">Illusion</option>
+            <option value="necromancy">Necromancy</option>
+            <option value="transmutation">Transmutation</option>
+        </select>
+        <!-- prepared -->
+        <label for="prepared">Prepared:</label>
+        <input type="checkbox" name="prepared" id="prepared"/>
+        <!-- concentration -->
+        <label for="prepared">Concentration:</label>
+        <input type="checkbox" name="concentration" id="concentration"/>
+        <!-- ritual -->
+        <label for="prepared">Ritual:</label>
+        <input type="checkbox" name="ritual" id="ritual"/>
+        <!-- casting time -->
+        <label for="castingTime">Casting Time></label>
+        <select id="castingTime" name="castingTime">
+            <option value="reaction">Reaction</option>
+            <option value="bonus-action">Bonus Action</option>
+            <option value="action">Action</option>
+            <option value="one-minute">1 Minute</option>
+            <option value="other">Other</option>
+        </select>
+        <!-- verbal -->
+        <label for="verbalComponent">Verbal Component:</label>
+        <input type="checkbox" name="verbalComponent" id="verbalComponent"/>
+        <!-- somatic -->
+        <label for="somaticComponent">Somatic Component:</label>
+        <input type="checkbox" name="somaticComponent" id="somaticComponent"/>
+        <!-- material -->
+        <label for="materialComponent">Material Components:</label>
+        <input type="text" name="materialComponent" id="materialComponent"/>
+        <!-- monetary -->
+        <label for="monetaryComponent">Monetary Components:</label>
+        <input type="text" name="monetaryComponent" id="monetaryComponent"/>
+        <!-- duration -->
+        <label for="duration">Duration:</label>
+        <input type="text" name="duration" id="duration"/>
+        <!-- range -->
+        <label for="range">Range (in feet):</label>
+        <input type="number" name="range" id="range"/>
+        <!-- effect -->
+        <label for="effect">Effects:</label>
+        <textarea name="effect" id="effect"></textarea>
+        <!-- notes -->
+        <label for="notes">Notes:</label>
+        <textarea name="notes" id="notes"></textarea>
+        <!-- submit -->
+        <button type="submit">Create Spell</button>
+    </form>
+</body>
+</html>

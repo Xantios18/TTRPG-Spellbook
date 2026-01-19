@@ -14,6 +14,7 @@ const bcrypt = require('bcrypt')
 
 const Player = require('./models/player.js')
 const passPlayerToView = require('./middleware/pass-player-to-view.js')
+const isSignedIn = require('./middleware/is-signed-in.js')
 
 const charactersController = require('./controllers/characters.js')
 
@@ -43,7 +44,7 @@ app.use(
 //------------------------------ROUTES------------------------------
 
 
-
+app.use(passPlayerToView)
 
 //sign-in routes
 
@@ -111,7 +112,7 @@ app.get('/sign-out', (req, res) => {
 
 //landing page
 
-app.use(passPlayerToView)
+
 
 app.get('/', (req, res) => {
     if(req.session.player) {
@@ -122,8 +123,9 @@ app.get('/', (req, res) => {
 })
 
 
-//isSignedIn
-app.use('/player/:playerId/characters', charactersController)
+app.use(isSignedIn)
+
+app.use('/players/:playerId/characters', charactersController)
 
 
 
