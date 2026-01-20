@@ -15,6 +15,7 @@ const bcrypt = require('bcrypt')
 const Player = require('./models/player.js')
 const passPlayerToView = require('./middleware/pass-player-to-view.js')
 const isSignedIn = require('./middleware/is-signed-in.js')
+const path = require('path')
 
 const charactersController = require('./controllers/characters.js')
 
@@ -32,6 +33,8 @@ mongoose.connection.on('connected', () => {
 app.use(express.urlencoded({ extended: false }))
 
 app.use(methodOverride('_method'))
+
+app.use(express.static(path.join(__dirname, 'public')))
 
 app.use(
     session({
@@ -66,7 +69,8 @@ app.post('/sign-in', async (req, res) => {
 
         req.session.player = {
             playerName: playerInDatabase.playerName,
-            _id: playerInDatabase._id
+            _id: playerInDatabase._id,
+            characters: playerInDatabase.characters
         }
     
     res.redirect('/')

@@ -1,0 +1,235 @@
+/* home page */
+.home-body {
+    background-color: grey;
+}
+
+.home-content {
+    background-color: lightgray;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    padding-bottom: 10px;
+}
+
+#app-title {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.sign-in-form {
+    margin: 0px 0px 21px 0px;
+    padding: 5px;
+}
+
+.sign-up-link {
+    display: flex;
+    justify-content: center;
+}
+
+#playerName {
+    margin: 0px 10px 0px 0px;
+}
+
+#password {
+    margin: 0px 10px 0px 0px;
+}
+
+/* sign up page */
+.sign-up-body {
+    background-color: grey;
+}
+
+.sign-up-content {
+    background-color: lightgray;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 10px;
+}
+
+.sign-up-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+}
+
+.sign-up-form {
+    padding: 5px;
+}
+
+/* characters page */
+.characters-body {
+    background-color: goldenrod;
+}
+
+.characters-content {
+    background-color: lightgoldenrodyellow;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 10px;
+}
+
+/* class styling */
+
+.bard-body {
+    background-color: rgb(255, 155, 172);
+    display: flex;
+    justify-content: center;
+}
+
+.bard-content {
+    background-color: rgb(255, 207, 214);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 30px;
+    width: 90%;
+}
+
+.cleric-body {
+    background-color: yellow;
+    display: flex;
+    justify-content: center;
+}
+
+.cleric-content {
+    background-color: rgb(255, 255, 178);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 30px;
+    width: 90%;
+}
+
+.druid-body {
+    background-color: green;
+    display: flex;
+    justify-content: center;
+}
+
+.druid-content {
+    background-color: lightgreen;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 30px;
+    width: 90%;
+}
+
+.paladin-body {
+    background-color: orange;
+    display: flex;
+    justify-content: center;
+}
+
+.paladin-content {
+    background-color: rgb(241, 204, 135);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 30px;
+    width: 90%;
+}
+
+.ranger-body {
+    background-color: saddlebrown;
+    display: flex;
+    justify-content: center;
+}
+
+.ranger-content {
+    background-color: tan;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 30px;
+    width: 90%;
+}
+
+.sorcerer-body {
+    background-color: red;
+    display: flex;
+    justify-content: center;
+}
+
+.sorcerer-content {
+    background-color: rgb(212, 125, 125);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 30px;
+    width: 90%;
+}
+
+.warlock-body {
+    background-color: purple;
+    display: flex;
+    justify-content: center;
+}
+
+.warlock-content {
+    background-color: rgb(209, 128, 209);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 30px;
+    width: 90%;
+}
+
+.wizard-body {
+    background-color: blue;
+    display: flex;
+    justify-content: center;
+}
+
+.wizard-content {
+    background-color: lightblue;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    width: 90%;
+}
+
+/* character details page */
+#spell-slots {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.spell-slots {
+    width: 95px;
+}
+
+.add-spell-link {
+    margin: 50px 0px;
+    align-self: center;
+}
+
+.spells {
+    display: grid;
+    grid-template-columns: repeat(5, 20%);
+    grid-template-rows: repeat(2, auto);
+}
+
+.spell-list {
+    border: 2px solid gray;
+    padding: 3px;
+}
+
+.spell-list > ul > li {
+    margin-top: 20px;
+}
+
+.spell-list > ul > li > p {
+    margin: 0px;
+}
+
+.spell-list > ul > li > form > button {
+    margin-top: 10px;
+}

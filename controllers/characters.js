@@ -80,8 +80,12 @@ router.put('/:characterId', async (req, res) => {
     })
 
 //display spell add page
-router.get('/:characterId/addSpell', (req, res) => {
-    res.render('characters/spells/add.ejs')
+router.get('/:characterId/addSpell', async (req, res) => {
+    const currentPlayer = await Player.findById(req.session.player._id)
+    const character = await currentPlayer.characters.id(req.params.characterId)
+    res.render('characters/spells/add.ejs', {
+        character: character
+    })
 })
 
 //display spell details page
@@ -91,6 +95,7 @@ router.get('/:characterId/:spellId', async (req, res) => {
     const spell = await character.spells.id(req.params.spellId)
 
     res.render('characters/spells/details.ejs', {
+        character: character,
         spell: spell
     })
 })
@@ -110,9 +115,34 @@ router.delete('/:characterId/:spellId', async (req, res) => {
 })
 
 //post new spell
-router.post('/:characterId', async (req, res) => {
+router.post('/:characterId/spells', async (req, res) => {
     const currentPlayer = await Player.findById(req.session.player._id)
     const character = await currentPlayer.characters.id(req.params.characterId)
+    if(req.body.prepared === 'on') {
+        req.body.prepared = true
+    } else {
+        req.body.prepared = false
+    }
+    if(req.body.concentraion === 'on') {
+        req.body.concentration = true
+    } else {
+        req.body.concentration = false
+    }
+    if(req.body.ritual === 'on') {
+        req.body.ritual = true
+    } else {
+        req.body.ritual = false
+    }
+    if(req.body.verbalComponent === 'on') {
+        req.body.verbalComponent = true
+    } else {
+        req.body.verbalComponent = false
+    }
+    if(req.body.somaticComponent === 'on') {
+        req.body.somaticComponent = true
+    } else {
+        req.body.somaticComponent = false
+    }
     character.spells.push(req.body)
     await currentPlayer.save()
     res.redirect(`/players/${currentPlayer.id}/characters/${req.params.characterId}`)
@@ -124,6 +154,7 @@ router.get('/:characterId/:spellId/edit', async (req, res) => {
     const character = await currentPlayer.characters.id(req.params.characterId)
     const spell = await character.spells.id(req.params.spellId)
     res.render('characters/spells/edit.ejs', {
+        character: character,
         spell: spell
     })
 })
@@ -134,6 +165,31 @@ router.put('/:characterId/:spellId', async (req, res) => {
         const currentPlayer = await Player.findById(req.session.player._id)
         const character = await currentPlayer.characters.id(req.params.characterId)
         const spell = await character.spells.id(req.params.spellId)
+        if(req.body.prepared === 'on') {
+        req.body.prepared = true
+    } else {
+        req.body.prepared = false
+    }
+    if(req.body.concentraion === 'on') {
+        req.body.concentration = true
+    } else {
+        req.body.concentration = false
+    }
+    if(req.body.ritual === 'on') {
+        req.body.ritual = true
+    } else {
+        req.body.ritual = false
+    }
+    if(req.body.verbalComponent === 'on') {
+        req.body.verbalComponent = true
+    } else {
+        req.body.verbalComponent = false
+    }
+    if(req.body.somaticComponent === 'on') {
+        req.body.somaticComponent = true
+    } else {
+        req.body.somaticComponent = false
+    }
         spell.set(req.body)
         await currentPlayer.save()
         res.redirect(`/players/${currentPlayer.id}/characters/${req.params.characterId}/${req.params.spellId}`)

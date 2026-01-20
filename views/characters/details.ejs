@@ -3,106 +3,436 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css" />
     <title><%= character.name %></title>
 </head>
-<body>
-    <h1><%= character.name %></h1>
-    <h2><%= character.class %></h2>
+<body class="<%= character.class %>-body">
+<div class="<%= character.class %>-content">
+    <%- include('../partials/_navbar.ejs') %>
+    <h1><%= character.name %>, <%= character.class %></h1>
     <a href="/players/<%= player._id %>/characters/<%= character._id %>/edit">Edit Character</a>
-    <div>
-        <p>Level 1 spell slots</p>
-        <% for (let i = 0; i < character.firstLvlSlots; i++) { %>
-            <input type="checkbox" class="first-lvl-slot"/>
-        <% } %>
-    </div>
-    <div>
-        <p>Level 2 spell slots</p>
-        <% for (let i = 0; i < character.secondLvlSlots; i++) { %>
-            <input type="checkbox" class="second-lvl-slot"/>
-        <% } %>
-    </div>
-    <div>
-        <p>Level 3 spell slots</p>
-        <% for (let i = 0; i < character.thirdLvlSlots; i++) { %>
-            <input type="checkbox" class="third-lvl-slot"/>
-        <% } %>
-    </div>
-    <div>
-        <p>Level 4 spell slots</p>
-        <% for (let i = 0; i < character.fourthLvlSlots; i++) { %>
-            <input type="checkbox" class="fourth-lvl-slot"/>
-        <% } %>
-    </div>
-    <div>
-        <p>Level 5 spell slots</p>
-        <% for (let i = 0; i < character.fifthLvlSlots; i++) { %>
-            <input type="checkbox" class="fifth-lvl-slot"/>
-        <% } %>
-    </div>
-    <div>
-        <p>Level 6 spell slots</p>
-        <% for (let i = 0; i < character.sixthLvlSlots; i++) { %>
-            <input type="checkbox" class="sixth-lvl-slot"/>
-        <% } %>
-    </div>
-    <div>
-        <p>Level 7 spell slots</p>
-        <% for (let i = 0; i < character.seventhLvlSlots; i++) { %>
-            <input type="checkbox" class="seventh-lvl-slot"/>
-        <% } %>
-    </div>
-    <div>
-        <p>Level 8 spell slots</p>
-        <% for (let i = 0; i < character.eighthLvlSlots; i++) { %>
-            <input type="checkbox" class="eighth-lvl-slot"/>
-        <% } %>
-    </div>
-    <div>
-        <p>Level 9 spell slots</p>
-        <% for (let i = 0; i < character.ninthLvlSlots; i++) { %>
-            <input type="checkbox" class="ninth-lvl-slot"/>
-        <% } %>
+    <div id="spell-slots">
+        <div class="spell-slots">
+            <p>Level 1 spells</p>
+            <% for (let i = 0; i < character.firstLvlSlots; i++) { %>
+                <input type="checkbox" class="first-lvl-slot"/>
+            <% } %>
+        </div>
+        <div class="spell-slots">
+            <p>Level 2 spells</p>
+            <% for (let i = 0; i < character.secondLvlSlots; i++) { %>
+                <input type="checkbox" class="second-lvl-slot"/>
+            <% } %>
+        </div>
+        <div class="spell-slots">
+            <p>Level 3 spells</p>
+            <% for (let i = 0; i < character.thirdLvlSlots; i++) { %>
+                <input type="checkbox" class="third-lvl-slot"/>
+            <% } %>
+        </div>
+        <div class="spell-slots">
+            <p>Level 4 spells</p>
+            <% for (let i = 0; i < character.fourthLvlSlots; i++) { %>
+                <input type="checkbox" class="fourth-lvl-slot"/>
+            <% } %>
+        </div>
+        <div class="spell-slots">
+            <p>Level 5 spells</p>
+            <% for (let i = 0; i < character.fifthLvlSlots; i++) { %>
+                <input type="checkbox" class="fifth-lvl-slot"/>
+            <% } %>
+        </div>
+        <div class="spell-slots">
+            <p>Level 6 spells</p>
+            <% for (let i = 0; i < character.sixthLvlSlots; i++) { %>
+                <input type="checkbox" class="sixth-lvl-slot"/>
+            <% } %>
+        </div>
+        <div class="spell-slots">
+            <p>Level 7 spells</p>
+            <% for (let i = 0; i < character.seventhLvlSlots; i++) { %>
+                <input type="checkbox" class="seventh-lvl-slot"/>
+            <% } %>
+        </div>
+        <div class="spell-slots">
+            <p>Level 8 spells</p>
+            <% for (let i = 0; i < character.eighthLvlSlots; i++) { %>
+                <input type="checkbox" class="eighth-lvl-slot"/>
+            <% } %>
+        </div>
+        <div class="spell-slots">
+            <p>Level 9 spells</p>
+            <% for (let i = 0; i < character.ninthLvlSlots; i++) { %>
+                <input type="checkbox" class="ninth-lvl-slot"/>
+            <% } %>
+        </div>
     </div>
 <!-- may need to add logic to preserve expended slots. probably also want a long rest button -->
  
-    <a href="/players/<%= player._id %>/characters/<%= character._id %>/addSpell">Add spell</a>
+    <a class="add-spell-link" href="/players/<%= player._id %>/characters/<%= character._id %>/addSpell">Add spell</a>
 
     <!-- spells -->
-    <div class="cantrips">
-        <p>Cantrips</p>
-        <ul>
-            <% character.spells.forEach((spell) => { %>
-                <% if(spell.level === 0) { %>
-                    <li>
-                        <a href="/players/<%= player._id %>/characters/<%= character._id %>/<%= spell._id %>">
-                            <%= spell.name %>
-                        </a>
-                        <!-- prepared -->
-                        <% if(spell.prepared) { %>
-                            <p>Prepared</p>
-                        <% } %>
-                        <!-- concentration -->
-                        <% if(spell.concentration) { %>
-                            <p>Concentration</p>
-                        <% } %>
-                        <!-- ritual -->
-                        <% if(spell.ritual) { %>
-                            <p>Ritual</p>
-                        <% } %>
-                        <!-- casting time -->
-                        <p>casting time: <%= spell.castingTime %></p>
-                        <!-- monetary component -->
-                        <% if(spell.monetaryComponent) { %>
-                            <p>Monetary Component: <%= spell.monetaryComponent %></p>
-                        <% } %>
-                        <!-- delete -->
-                        <form action="/players/<%= player._id %>/characters/<%= character._id %>/<%= spell._id %>?_method=DELETE" method="POST">
-                            <button type="submit">Forget Spell</button>
-                        </form>
-                    </li>
-                <% } %>
-            <% }) %>
-        </ul>
-    </div> 
+    <div class="spells">
+        <div class="spell-list" id="cantrips">
+            <p>Cantrips</p>
+            <ul>
+                <% character.spells.forEach((spell) => { %>
+                    <% if(spell.level === 0) { %>
+                        <li>
+                            <a href="/players/<%= player._id %>/characters/<%= character._id %>/<%= spell._id %>">
+                                <%= spell.name %>
+                            </a>
+                            <!-- prepared -->
+                            <% if(spell.prepared) { %>
+                                <p>Prepared</p>
+                            <% } %>
+                            <!-- concentration -->
+                            <% if(spell.concentration) { %>
+                                <p>Concentration</p>
+                            <% } %>
+                            <!-- ritual -->
+                            <% if(spell.ritual) { %>
+                                <p>Ritual</p>
+                            <% } %>
+                            <!-- casting time -->
+                            <p>casting time: <%= spell.castingTime %></p>
+                            <!-- monetary component -->
+                            <% if(spell.monetaryComponent) { %>
+                                <p>Monetary Component: <%= spell.monetaryComponent %></p>
+                            <% } %>
+                            <!-- delete -->
+                            <form action="/players/<%= player._id %>/characters/<%= character._id %>/<%= spell._id %>?_method=DELETE" method="POST">
+                                <button type="submit">Forget Spell</button>
+                            </form>
+                        </li>
+                    <% } %>
+                <% }) %>
+            </ul>
+        </div> 
+        <div class="spell-list" id="first-lvl-spells">
+            <p>Level 1 Spells</p>
+            <ul>
+                <% character.spells.forEach((spell) => { %>
+                    <% if(spell.level === 1) { %>
+                        <li>
+                            <a href="/players/<%= player._id %>/characters/<%= character._id %>/<%= spell._id %>">
+                                <%= spell.name %>
+                            </a>
+                            <!-- prepared -->
+                            <% if(spell.prepared) { %>
+                                <p>Prepared</p>
+                            <% } %>
+                            <!-- concentration -->
+                            <% if(spell.concentration) { %>
+                                <p>Concentration</p>
+                            <% } %>
+                            <!-- ritual -->
+                            <% if(spell.ritual) { %>
+                                <p>Ritual</p>
+                            <% } %>
+                            <!-- casting time -->
+                            <p>casting time: <%= spell.castingTime %></p>
+                            <!-- monetary component -->
+                            <% if(spell.monetaryComponent) { %>
+                                <p>Monetary Component: <%= spell.monetaryComponent %></p>
+                            <% } %>
+                            <!-- delete -->
+                            <form action="/players/<%= player._id %>/characters/<%= character._id %>/<%= spell._id %>?_method=DELETE" method="POST">
+                                <button type="submit">Forget Spell</button>
+                            </form>
+                        </li>
+                    <% } %>
+                <% }) %>
+            </ul>
+        </div> 
+        <div class="spell-list" id="second-lvl-spells">
+            <p>Level 2 Spells</p>
+            <ul>
+                <% character.spells.forEach((spell) => { %>
+                    <% if(spell.level === 2) { %>
+                        <li>
+                            <a href="/players/<%= player._id %>/characters/<%= character._id %>/<%= spell._id %>">
+                                <%= spell.name %>
+                            </a>
+                            <!-- prepared -->
+                            <% if(spell.prepared) { %>
+                                <p>Prepared</p>
+                            <% } %>
+                            <!-- concentration -->
+                            <% if(spell.concentration) { %>
+                                <p>Concentration</p>
+                            <% } %>
+                            <!-- ritual -->
+                            <% if(spell.ritual) { %>
+                                <p>Ritual</p>
+                            <% } %>
+                            <!-- casting time -->
+                            <p>casting time: <%= spell.castingTime %></p>
+                            <!-- monetary component -->
+                            <% if(spell.monetaryComponent) { %>
+                                <p>Monetary Component: <%= spell.monetaryComponent %></p>
+                            <% } %>
+                            <!-- delete -->
+                            <form action="/players/<%= player._id %>/characters/<%= character._id %>/<%= spell._id %>?_method=DELETE" method="POST">
+                                <button type="submit">Forget Spell</button>
+                            </form>
+                        </li>
+                    <% } %>
+                <% }) %>
+            </ul>
+        </div> 
+        <div class="spell-list" id="third-lvl-spells">
+            <p>Level 3 Spells</p>
+            <ul>
+                <% character.spells.forEach((spell) => { %>
+                    <% if(spell.level === 3) { %>
+                        <li>
+                            <a href="/players/<%= player._id %>/characters/<%= character._id %>/<%= spell._id %>">
+                                <%= spell.name %>
+                            </a>
+                            <!-- prepared -->
+                            <% if(spell.prepared) { %>
+                                <p>Prepared</p>
+                            <% } %>
+                            <!-- concentration -->
+                            <% if(spell.concentration) { %>
+                                <p>Concentration</p>
+                            <% } %>
+                            <!-- ritual -->
+                            <% if(spell.ritual) { %>
+                                <p>Ritual</p>
+                            <% } %>
+                            <!-- casting time -->
+                            <p>casting time: <%= spell.castingTime %></p>
+                            <!-- monetary component -->
+                            <% if(spell.monetaryComponent) { %>
+                                <p>Monetary Component: <%= spell.monetaryComponent %></p>
+                            <% } %>
+                            <!-- delete -->
+                            <form action="/players/<%= player._id %>/characters/<%= character._id %>/<%= spell._id %>?_method=DELETE" method="POST">
+                                <button type="submit">Forget Spell</button>
+                            </form>
+                        </li>
+                    <% } %>
+                <% }) %>
+            </ul>
+        </div> 
+        <div class="spell-list" id="fourth-lvl-spells">
+            <p>Level 4 Spells</p>
+            <ul>
+                <% character.spells.forEach((spell) => { %>
+                    <% if(spell.level === 4) { %>
+                        <li>
+                            <a href="/players/<%= player._id %>/characters/<%= character._id %>/<%= spell._id %>">
+                                <%= spell.name %>
+                            </a>
+                            <!-- prepared -->
+                            <% if(spell.prepared) { %>
+                                <p>Prepared</p>
+                            <% } %>
+                            <!-- concentration -->
+                            <% if(spell.concentration) { %>
+                                <p>Concentration</p>
+                            <% } %>
+                            <!-- ritual -->
+                            <% if(spell.ritual) { %>
+                                <p>Ritual</p>
+                            <% } %>
+                            <!-- casting time -->
+                            <p>casting time: <%= spell.castingTime %></p>
+                            <!-- monetary component -->
+                            <% if(spell.monetaryComponent) { %>
+                                <p>Monetary Component: <%= spell.monetaryComponent %></p>
+                            <% } %>
+                            <!-- delete -->
+                            <form action="/players/<%= player._id %>/characters/<%= character._id %>/<%= spell._id %>?_method=DELETE" method="POST">
+                                <button type="submit">Forget Spell</button>
+                            </form>
+                        </li>
+                    <% } %>
+                <% }) %>
+            </ul>
+        </div> 
+        <div class="spell-list" id="fifth-lvl-spells">
+            <p>Level 5 Spells</p>
+            <ul>
+                <% character.spells.forEach((spell) => { %>
+                    <% if(spell.level === 5) { %>
+                        <li>
+                            <a href="/players/<%= player._id %>/characters/<%= character._id %>/<%= spell._id %>">
+                                <%= spell.name %>
+                            </a>
+                            <!-- prepared -->
+                            <% if(spell.prepared) { %>
+                                <p>Prepared</p>
+                            <% } %>
+                            <!-- concentration -->
+                            <% if(spell.concentration) { %>
+                                <p>Concentration</p>
+                            <% } %>
+                            <!-- ritual -->
+                            <% if(spell.ritual) { %>
+                                <p>Ritual</p>
+                            <% } %>
+                            <!-- casting time -->
+                            <p>casting time: <%= spell.castingTime %></p>
+                            <!-- monetary component -->
+                            <% if(spell.monetaryComponent) { %>
+                                <p>Monetary Component: <%= spell.monetaryComponent %></p>
+                            <% } %>
+                            <!-- delete -->
+                            <form action="/players/<%= player._id %>/characters/<%= character._id %>/<%= spell._id %>?_method=DELETE" method="POST">
+                                <button type="submit">Forget Spell</button>
+                            </form>
+                        </li>
+                    <% } %>
+                <% }) %>
+            </ul>
+        </div> 
+        <div class="spell-list" id="sixth-lvl-spells">
+            <p>Level 6 Spells</p>
+            <ul>
+                <% character.spells.forEach((spell) => { %>
+                    <% if(spell.level === 6) { %>
+                        <li>
+                            <a href="/players/<%= player._id %>/characters/<%= character._id %>/<%= spell._id %>">
+                                <%= spell.name %>
+                            </a>
+                            <!-- prepared -->
+                            <% if(spell.prepared) { %>
+                                <p>Prepared</p>
+                            <% } %>
+                            <!-- concentration -->
+                            <% if(spell.concentration) { %>
+                                <p>Concentration</p>
+                            <% } %>
+                            <!-- ritual -->
+                            <% if(spell.ritual) { %>
+                                <p>Ritual</p>
+                            <% } %>
+                            <!-- casting time -->
+                            <p>casting time: <%= spell.castingTime %></p>
+                            <!-- monetary component -->
+                            <% if(spell.monetaryComponent) { %>
+                                <p>Monetary Component: <%= spell.monetaryComponent %></p>
+                            <% } %>
+                            <!-- delete -->
+                            <form action="/players/<%= player._id %>/characters/<%= character._id %>/<%= spell._id %>?_method=DELETE" method="POST">
+                                <button type="submit">Forget Spell</button>
+                            </form>
+                        </li>
+                    <% } %>
+                <% }) %>
+            </ul>
+        </div> 
+        <div class="spell-list" id="seventh-lvl-spells">
+            <p>Level 7 Spells</p>
+            <ul>
+                <% character.spells.forEach((spell) => { %>
+                    <% if(spell.level === 7) { %>
+                        <li>
+                            <a href="/players/<%= player._id %>/characters/<%= character._id %>/<%= spell._id %>">
+                                <%= spell.name %>
+                            </a>
+                            <!-- prepared -->
+                            <% if(spell.prepared) { %>
+                                <p>Prepared</p>
+                            <% } %>
+                            <!-- concentration -->
+                            <% if(spell.concentration) { %>
+                                <p>Concentration</p>
+                            <% } %>
+                            <!-- ritual -->
+                            <% if(spell.ritual) { %>
+                                <p>Ritual</p>
+                            <% } %>
+                            <!-- casting time -->
+                            <p>casting time: <%= spell.castingTime %></p>
+                            <!-- monetary component -->
+                            <% if(spell.monetaryComponent) { %>
+                                <p>Monetary Component: <%= spell.monetaryComponent %></p>
+                            <% } %>
+                            <!-- delete -->
+                            <form action="/players/<%= player._id %>/characters/<%= character._id %>/<%= spell._id %>?_method=DELETE" method="POST">
+                                <button type="submit">Forget Spell</button>
+                            </form>
+                        </li>
+                    <% } %>
+                <% }) %>
+            </ul>
+        </div> 
+        <div class="spell-list" id="eighth-lvl-spells">
+            <p>Level 8 Spells</p>
+            <ul>
+                <% character.spells.forEach((spell) => { %>
+                    <% if(spell.level === 8) { %>
+                        <li>
+                            <a href="/players/<%= player._id %>/characters/<%= character._id %>/<%= spell._id %>">
+                                <%= spell.name %>
+                            </a>
+                            <!-- prepared -->
+                            <% if(spell.prepared) { %>
+                                <p>Prepared</p>
+                            <% } %>
+                            <!-- concentration -->
+                            <% if(spell.concentration) { %>
+                                <p>Concentration</p>
+                            <% } %>
+                            <!-- ritual -->
+                            <% if(spell.ritual) { %>
+                                <p>Ritual</p>
+                            <% } %>
+                            <!-- casting time -->
+                            <p>casting time: <%= spell.castingTime %></p>
+                            <!-- monetary component -->
+                            <% if(spell.monetaryComponent) { %>
+                                <p>Monetary Component: <%= spell.monetaryComponent %></p>
+                            <% } %>
+                            <!-- delete -->
+                            <form action="/players/<%= player._id %>/characters/<%= character._id %>/<%= spell._id %>?_method=DELETE" method="POST">
+                                <button type="submit">Forget Spell</button>
+                            </form>
+                        </li>
+                    <% } %>
+                <% }) %>
+            </ul>
+        </div> 
+        <div class="spell-list" id="ninth-lvl-spells">
+            <p>Level 9 Spells</p>
+            <ul>
+                <% character.spells.forEach((spell) => { %>
+                    <% if(spell.level === 9) { %>
+                        <li class="spell-quick-look">
+                            <a href="/players/<%= player._id %>/characters/<%= character._id %>/<%= spell._id %>">
+                                <%= spell.name %>
+                            </a>
+                            <!-- prepared -->
+                            <% if(spell.prepared) { %>
+                                <p>Prepared</p>
+                            <% } %>
+                            <!-- concentration -->
+                            <% if(spell.concentration) { %>
+                                <p>Concentration</p>
+                            <% } %>
+                            <!-- ritual -->
+                            <% if(spell.ritual) { %>
+                                <p>Ritual</p>
+                            <% } %>
+                            <!-- casting time -->
+                            <p>casting time: <%= spell.castingTime %></p>
+                            <!-- monetary component -->
+                            <% if(spell.monetaryComponent) { %>
+                                <p>Monetary Component: <%= spell.monetaryComponent %></p>
+                            <% } %>
+                            <!-- delete -->
+                            <form action="/players/<%= player._id %>/characters/<%= character._id %>/<%= spell._id %>?_method=DELETE" method="POST">
+                                <button class="forget-spell" type="submit">Forget Spell</button>
+                            </form>
+                        </li>
+                    <% } %>
+                <% }) %>
+            </ul>
+        </div> 
+    </div>
 </body>
 </html>

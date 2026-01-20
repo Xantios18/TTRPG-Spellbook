@@ -3,11 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css" />
     <title>Sign up</title>
 </head>
-<body>
-    <h1>Create New Account</h1>
-    <form action="/sign-up" method="POST">
+<body class="sign-up-body">
+<div class="sign-up-content">
+    <a class="nav-link" href="/">Homepage</a>
+    <h1 class="sign-up-header">Create New Account</h1>
+    <form class="sign-up-form" action="/sign-up" method="POST">
         <label for="playerName">Player Name:</label>
         <input type="text" name="playerName" id="playerName" required />
         <label for="password">Password:</label>
@@ -16,5 +19,6 @@
         <input type="password" name="confirmPassword" id="confirmPassword" required />
         <button type="submit">Sign up</button>
     </form>
+</div>
 </body>
 </html>

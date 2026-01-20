@@ -3,11 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css" />
     <title>Add Spell</title>
 </head>
 <body>
+    <%- include('../../partials/_navbar.ejs') %>
+    <a class="nav-link" href="/players/<%= player._id %>/characters/<%= character._id %>"><%= character.name %>'s Homepage</a>
     <h1>Spell Details</h1>
-    <form action="/players/<%= player._id %>/characters/<%= character._id %>" method="POST">
+    <form action="/players/<%= player._id %>/characters/<%= character._id %>/spells" method="POST">
         <!-- name -->
         <label for="name">Name:</label>
         <input type="text" name="name" id="name"/>
@@ -36,7 +39,7 @@
         <label for="prepared">Ritual:</label>
         <input type="checkbox" name="ritual" id="ritual"/>
         <!-- casting time -->
-        <label for="castingTime">Casting Time></label>
+        <label for="castingTime">Casting Time:</label>
         <select id="castingTime" name="castingTime">
             <option value="reaction">Reaction</option>
             <option value="bonus-action">Bonus Action</option>

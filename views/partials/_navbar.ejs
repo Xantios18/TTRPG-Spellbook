@@ -1,0 +1,10 @@
+<!-- <link rel="stylesheet" href="/stulesheets/partials.css"/> -->
+
+<nav>
+    <% if(player) { %>
+        <div class="navbar">
+            <a class="nav-link" href="/players/<%= player._id %>/characters">Your Characters</a>
+            <a class="nav-link" href="/sign-out">Sign Out</a>
+        </div>
+   <% } %>
+</nav>

@@ -3,17 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css" />
     <title>Edit <%= spell.name %></title>
 </head>
 <body>
+    <%- include('../../partials/_navbar.ejs') %>
+    <a class="nav-link" href="/players/<%= player._id %>/characters/<%= character._id %>"><%= character.name %>'s Homepage</a>
+    <a class="nav-link" href="/players/<%= player._id %>/characters/<%= character._id %>/<%= spell._id %>"><%= spell.name %>'s details</a>
     <h1>Spell Details</h1>
     <form action="/players/<%= player._id %>/characters/<%= character._id %>/<%= spell._id %>?_method=PUT" method="POST">
         <!-- name -->
         <label for="name">Name:</label>
-        <input type="text" name="name" id="name" value="spell.name"/>
+        <input type="text" name="name" id="name" value="<%= spell.name %>"/>
         <!-- level -->
         <label for="level">Level:</label>
-        <input type="number" name="level" id="level" value="spell.level"/>
+        <input type="number" name="level" id="level" value="<%= spell.level %>"/>
         <!-- school -->
         <label for="school">School:</label>
         <select id="school" name="school">
@@ -28,15 +32,15 @@
         </select>
         <!-- prepared -->
         <label for="prepared">Prepared:</label>
-        <input type="checkbox" name="prepared" id="prepared" <% spell.prepared ? "checked" %>/>
+        <input type="checkbox" name="prepared" id="prepared" <% if(spell.prepared) { %> checked <% } %>/>
         <!-- concentration -->
         <label for="prepared">Concentration:</label>
-        <input type="checkbox" name="concentration" id="concentration" <% spell.concentration ? "checked" %>/>
+        <input type="checkbox" name="concentration" id="concentration" <% if(spell.concentration) { %> checked <% } %>/>
         <!-- ritual -->
         <label for="prepared">Ritual:</label>
-        <input type="checkbox" name="ritual" id="ritual" <% spell.ritual ? "checked" %>/>
+        <input type="checkbox" name="ritual" id="ritual" <% if(spell.ritual) { %> checked <% } %>/>
         <!-- casting time -->
-        <label for="castingTime">Casting Time></label>
+        <label for="castingTime">Casting Time:</label>
         <select id="castingTime" name="castingTime">
             <option value="reaction" <%= spell.castingTime === 'reaction' ? "selected" : "" %>>Reaction</option>
             <option value="bonus-action" <%= spell.castingTime === 'bonus-action' ? "selected" : "" %>>Bonus Action</option>
@@ -46,28 +50,28 @@
         </select>
         <!-- verbal -->
         <label for="verbalComponent">Verbal Component:</label>
-        <input type="checkbox" name="verbalComponent" id="verbalComponent" <% spell.verbalComponent ? "checked" %>/>
+        <input type="checkbox" name="verbalComponent" id="verbalComponent" <% if(spell.verbalComponent) { %> checked <% } %>/>
         <!-- somatic -->
         <label for="somaticComponent">Somatic Component:</label>
-        <input type="checkbox" name="somaticComponent" id="somaticComponent" <% spell.somaticComponent ? "checked" %>/>
+        <input type="checkbox" name="somaticComponent" id="somaticComponent" <% if(spell.somaticComponent) { %> checked <% } %>/>
         <!-- material -->
         <label for="materialComponent">Material Components:</label>
-        <input type="text" name="materialComponent" id="materialComponent" value="spell.materialComponent"/>
+        <input type="text" name="materialComponent" id="materialComponent" value="<%= spell.materialComponent %>"/>
         <!-- monetary -->
         <label for="monetaryComponent">Monetary Components:</label>
-        <input type="text" name="monetaryComponent" id="monetaryComponent" value="spell.monetaryComponent"/>
+        <input type="text" name="monetaryComponent" id="monetaryComponent" value="<%= spell.monetaryComponent %>"/>
         <!-- duration -->
         <label for="duration">Duration:</label>
-        <input type="text" name="duration" id="duration" value="spell.duration"/>
+        <input type="text" name="duration" id="duration" value="<%= spell.duration %>"/>
         <!-- range -->
         <label for="range">Range (in feet):</label>
-        <input type="number" name="range" id="range" value="spell.range"/>
+        <input type="number" name="range" id="range" value="<%= spell.range %>"/>
         <!-- effect -->
         <label for="effect">Effects:</label>
-        <textarea name="effect" id="effect" value="spell.effect"></textarea>
+        <textarea name="effect" id="effect"><%= spell.effect %></textarea>
         <!-- notes -->
         <label for="notes">Notes:</label>
-        <textarea name="notes" id="notes" value="spell.notes"></textarea>
+        <textarea name="notes" id="notes"><%= spell.notes %></textarea>
         <!-- submit -->
         <button type="submit">Edit Spell</button>
     </form>
