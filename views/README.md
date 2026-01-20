@@ -25,9 +25,9 @@ Perhaps a future build could customized each character page even further based o
 https://trello.com/b/Uco5NrVs/men-stack-crud-app-project
 
 ###### Deployment
-TBD
+https://ttrpg-spellbook-app-92ce9248e194.herokuapp.com/
 
-###### Technologies
+##### Technologies
 Javascript
 Express/EJS
 MongoDB/Mongoose
