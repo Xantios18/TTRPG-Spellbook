@@ -6,44 +6,62 @@
     <link rel="stylesheet" href="/stylesheets/style.css" />
     <title><%= spell.name %></title>
 </head>
-<body>
+<body class="<%= character.class %>-body">
+<div class="<%= character.class %>-content">
     <%- include('../../partials/_navbar.ejs') %>
     <a class="nav-link" href="/players/<%= player._id %>/characters/<%= character._id %>"><%= character.name %>'s Homepage</a>
-    <h1><%= spell.name %></h1>
-    <h2><%= spell.school %> <% spell.level === 0 ? 'cantrip' : `level ${spell.level}` %></h2>    
-    <a href="/players/<%= player._id %>/characters/<%= character._id %>/<%= spell._id %>/edit">Edit Spell</a>
-    <% if(spell.prepared) { %>
-        <p>Prepared</p>
-    <% } %>
-    <% if(spell.concentration) { %>
-        <p>Concentration</p>
-    <% } %>
-    <% if(spell.ritual) { %>
-        <p>Ritual</p>
-    <% } %>
-    <div>
-        <h3>Components:</h3>
-        <% if(!spell.verbalComponent && !spell.somaticComponent && !spell.materialComponent && !spell.monetaryComponent) { %>
-            <p>None</p>
-        <% } %>
-        <% if(spell.verbalComponent) { %>
-            <p>Verbal</p>
-        <% } %>
-        <% if(spell.somaticComponent) { %>
-            <p>Somatic</p>
-        <% } %>
-        <% if(spell.materialComponent) { %>
-            <p>Material Components: <%= spell.materialComponent %></p>
-        <% } %>
-        <% if(spell.monetaryComponent) { %>
-            <p>Monetary Components: <%= spell.monetaryComponent %></p>
+    <div class="spell-header">
+        <h1><%= spell.name %></h1>
+        <h2><%= spell.school %> 
+            <% if(spell.level === 0) { %>
+                Cantrip
+            <% }  else { %>
+                level <%= spell.level %>
+            <% } %>
+        </h2>
+        <% if(spell.prepared) { %>
+            <h3>Prepared</h3>
         <% } %>
     </div>
-    <p>Duration: <%= spell.duration %></p>
-    <p>range: <%= spell.range %></p>
-    <h3>Effect:</h3>
-    <p><%= spell.effect %></p>
-    <h3>Notes:</h3>
-    <p><%= spell.notes %></p>
+    <a class="edit-spell-link" href="/players/<%= player._id %>/characters/<%= character._id %>/<%= spell._id %>/edit">Edit Spell</a>
+    <div class="casting">
+        <% if(spell.concentration) { %>
+            <p>Concentration</p>
+        <% } %>
+        <% if(spell.ritual) { %>
+            <p>Ritual</p>
+        <% } %>
+        <div class="spell-components">
+            <h4>Components:</h4>
+            <% if(!spell.verbalComponent && !spell.somaticComponent && !spell.materialComponent && !spell.monetaryComponent) { %>
+                <p>None</p>
+            <% } %>
+            <% if(spell.verbalComponent) { %>
+                <p>Verbal</p>
+            <% } %>
+            <% if(spell.somaticComponent) { %>
+                <p>Somatic</p>
+            <% } %>
+            <% if(spell.materialComponent) { %>
+                <p>Material Components: <%= spell.materialComponent %></p>
+            <% } %>
+            <% if(spell.monetaryComponent) { %>
+                <p>Monetary Components: <%= spell.monetaryComponent %></p>
+            <% } %>
+        </div>
+    </div>
+    <div class="spell-effects">
+        <p>Duration: <%= spell.duration %></p>
+        <p>Range: <%= spell.range %></p>
+        <div class="effect">
+            <h4>Effect:</h4>
+            <p><%= spell.effect %></p>
+        </div>
+    </div>
+    <div class="notes">
+        <h4>Notes:</h4>
+        <p><%= spell.notes %></p>
+    </div>
+</div>
 </body>
 </html>

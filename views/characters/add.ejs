@@ -6,45 +6,73 @@
     <link rel="stylesheet" href="/stylesheets/style.css" />
     <title>Character Creation</title>
 </head>
-<body>
+<body class="character-creation-body">
+<div class="character-creation-content">
     <%- include('../partials/_navbar.ejs') %>
     <h1>Create your character</h1>
-    <form action="/players/<%= player._id %>/characters/" method="POST">
+    <form class="character-creation-form" action="/players/<%= player._id %>/characters/" method="POST">
         <!-- name -->
-        <label for="name">Name:</label>
-        <input type="text" name="name" id="name"/>
+        <div class="character-details">
+            <div class="character-name">
+                <label for="name">Name:</label>
+                <input type="text" name="name" id="name"/>
+            </div>
         <!-- class -->
-        <label for="class">Class:</label>
-        <select id="class" name="class">
-            <option value="bard">Bard</option>
-            <option value="cleric">Cleric</option>
-            <option value="druid">Druid</option>
-            <option value="paladin">Paladin</option>
-            <option value="ranger">Ranger</option>
-            <option value="sorcerer">Sorcerer</option>
-            <option value="warlock">Warlock</option>
-            <option value="wizard">Wizard</option>
-        </select>
+            <div class="character-class">
+                <label for="class">Class:</label>
+                <select id="class" name="class">
+                    <option value="bard">Bard</option>
+                    <option value="cleric">Cleric</option>
+                    <option value="druid">Druid</option>
+                    <option value="paladin">Paladin</option>
+                    <option value="ranger">Ranger</option>
+                    <option value="sorcerer">Sorcerer</option>
+                    <option value="warlock">Warlock</option>
+                    <option value="wizard">Wizard</option>
+                </select>
+            </div>
+        </div>
         <!-- spell slots 1-9 -->
-        <label for="firstLvlSlots">Level 1 spell slots:</label>
-        <input type="number" name="firstLvlSlots" id="firstLvlSlots" value="0"/>
-        <label for="secondLvlSlots">Level 2 spell slots:</label>
-        <input type="number" name="secondLvlSlots" id="secondLvlSlots" value="0"/>
-        <label for="thirdLvlSlots">Level 3 spell slots:</label>
-        <input type="number" name="thirdLvlSlots" id="thirdLvlSlots" value="0"/>
-        <label for="fourthLvlSlots">Level 4 spell slots:</label>
-        <input type="number" name="fourthLvlSlots" id="fourthLvlSlots" value="0"/>
-        <label for="fifthLvlSlots">Level 5 spell slots:</label>
-        <input type="number" name="fifthLvlSlots" id="fifthLvlSlots" value="0"/>
-        <label for="sixthLvlSlots">Level 6 spell slots:</label>
-        <input type="number" name="sixthLvlSlots" id="sixthLvlSlots" value="0"/>
-        <label for="seventhLvlSlots">Level 7 spell slots:</label>
-        <input type="number" name="seventhLvlSlots" id="seventhLvlSlots" value="0"/>
-        <label for="eigthLvlSlots">Level 8 spell slots:</label>
-        <input type="number" name="eigthLvlSlots" id="eigthLvlSlots" value="0"/>
-        <label for="ninthLvlSlots">Level 9 spell slots:</label>
-        <input type="number" name="ninthLvlSlots" id="ninthLvlSlots" value="0"/>
-        <button type="submit">Create Character</button>
+        <div class="character-spell-slots">
+            <div>
+                <label for="firstLvlSlots">Level 1 spell slots:</label>
+                <input type="number" name="firstLvlSlots" id="firstLvlSlots" value="0"/>
+            </div>
+            <div>
+                <label for="secondLvlSlots">Level 2 spell slots:</label>
+                <input type="number" name="secondLvlSlots" id="secondLvlSlots" value="0"/>
+            </div>
+            <div>
+                <label for="thirdLvlSlots">Level 3 spell slots:</label>
+                <input type="number" name="thirdLvlSlots" id="thirdLvlSlots" value="0"/>
+            </div>
+            <div>
+                <label for="fourthLvlSlots">Level 4 spell slots:</label>
+                <input type="number" name="fourthLvlSlots" id="fourthLvlSlots" value="0"/>
+            </div>
+            <div>
+                <label for="fifthLvlSlots">Level 5 spell slots:</label>
+                <input type="number" name="fifthLvlSlots" id="fifthLvlSlots" value="0"/>
+            </div>
+            <div>
+                <label for="sixthLvlSlots">Level 6 spell slots:</label>
+                <input type="number" name="sixthLvlSlots" id="sixthLvlSlots" value="0"/>
+            </div>
+            <div>
+                <label for="seventhLvlSlots">Level 7 spell slots:</label>
+                <input type="number" name="seventhLvlSlots" id="seventhLvlSlots" value="0"/>
+            </div>
+            <div>
+                <label for="eighthLvlSlots">Level 8 spell slots:</label>
+                <input type="number" name="eighthLvlSlots" id="eighthLvlSlots" value="0"/>
+            </div>
+            <div>
+                <label for="ninthLvlSlots">Level 9 spell slots:</label>
+                <input type="number" name="ninthLvlSlots" id="ninthLvlSlots" value="0"/>
+            </div>
+        </div>
+        <button class="character-submit-button" type="submit">Create Character</button>
     </form>
+</div>
 </body>
 </html>

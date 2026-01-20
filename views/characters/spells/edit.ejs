@@ -6,74 +6,106 @@
     <link rel="stylesheet" href="/stylesheets/style.css" />
     <title>Edit <%= spell.name %></title>
 </head>
-<body>
+<body class="spell-creation-body">
+<div class="spell-creation-content">
     <%- include('../../partials/_navbar.ejs') %>
     <a class="nav-link" href="/players/<%= player._id %>/characters/<%= character._id %>"><%= character.name %>'s Homepage</a>
     <a class="nav-link" href="/players/<%= player._id %>/characters/<%= character._id %>/<%= spell._id %>"><%= spell.name %>'s details</a>
     <h1>Spell Details</h1>
-    <form action="/players/<%= player._id %>/characters/<%= character._id %>/<%= spell._id %>?_method=PUT" method="POST">
+    <form class="spell-creation-form" action="/players/<%= player._id %>/characters/<%= character._id %>/<%= spell._id %>?_method=PUT" method="POST">
         <!-- name -->
-        <label for="name">Name:</label>
-        <input type="text" name="name" id="name" value="<%= spell.name %>"/>
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" name="name" id="name" value="<%= spell.name %>"/>
+        </div>
         <!-- level -->
-        <label for="level">Level:</label>
-        <input type="number" name="level" id="level" value="<%= spell.level %>"/>
+        <div>
+            <label for="level">Level:</label>
+            <input type="number" name="level" id="level" value="<%= spell.level %>"/>
+        </div>
         <!-- school -->
-        <label for="school">School:</label>
-        <select id="school" name="school">
-            <option value="abjuration" <%= spell.school === 'abjuration' ? "selected" : "" %>>Abjuration</option>
-            <option value="conjuration" <%= spell.school === 'conjuration' ? "selected" : "" %>>Conjuration</option>
-            <option value="divination" <%= spell.school === 'divination' ? "selected" : "" %>>Divination</option>
-            <option value="enchantment" <%= spell.school === 'enchantment' ? "selected" : "" %>>Enchantment</option>
-            <option value="evocation" <%= spell.school === 'evocation' ? "selected" : "" %>>Evocation</option>
-            <option value="illusion" <%= spell.school === 'illusion' ? "selected" : "" %>>Illusion</option>
-            <option value="necromancy" <%= spell.school === 'necromancy' ? "selected" : "" %>>Necromancy</option>
-            <option value="transmutation" <%= spell.school === 'transmutation' ? "selected" : "" %>>Transmutation</option>
-        </select>
+        <div>
+            <label for="school">School:</label>
+            <select id="school" name="school">
+                <option value="abjuration" <%= spell.school === 'abjuration' ? "selected" : "" %>>Abjuration</option>
+                <option value="conjuration" <%= spell.school === 'conjuration' ? "selected" : "" %>>Conjuration</option>
+                <option value="divination" <%= spell.school === 'divination' ? "selected" : "" %>>Divination</option>
+                <option value="enchantment" <%= spell.school === 'enchantment' ? "selected" : "" %>>Enchantment</option>
+                <option value="evocation" <%= spell.school === 'evocation' ? "selected" : "" %>>Evocation</option>
+                <option value="illusion" <%= spell.school === 'illusion' ? "selected" : "" %>>Illusion</option>
+                <option value="necromancy" <%= spell.school === 'necromancy' ? "selected" : "" %>>Necromancy</option>
+                <option value="transmutation" <%= spell.school === 'transmutation' ? "selected" : "" %>>Transmutation</option>
+            </select>
+        </div>
         <!-- prepared -->
-        <label for="prepared">Prepared:</label>
-        <input type="checkbox" name="prepared" id="prepared" <% if(spell.prepared) { %> checked <% } %>/>
+        <div>
+            <label for="prepared">Prepared:</label>
+            <input type="checkbox" name="prepared" id="prepared" <% if(spell.prepared) { %> checked <% } %>/>
+        </div>
         <!-- concentration -->
-        <label for="prepared">Concentration:</label>
-        <input type="checkbox" name="concentration" id="concentration" <% if(spell.concentration) { %> checked <% } %>/>
+        <div>
+            <label for="prepared">Concentration:</label>
+            <input type="checkbox" name="concentration" id="concentration" <% if(spell.concentration) { %> checked <% } %>/>
+        </div>
         <!-- ritual -->
-        <label for="prepared">Ritual:</label>
-        <input type="checkbox" name="ritual" id="ritual" <% if(spell.ritual) { %> checked <% } %>/>
+        <div>
+            <label for="prepared">Ritual:</label>
+            <input type="checkbox" name="ritual" id="ritual" <% if(spell.ritual) { %> checked <% } %>/>
+        </div>
         <!-- casting time -->
-        <label for="castingTime">Casting Time:</label>
-        <select id="castingTime" name="castingTime">
-            <option value="reaction" <%= spell.castingTime === 'reaction' ? "selected" : "" %>>Reaction</option>
-            <option value="bonus-action" <%= spell.castingTime === 'bonus-action' ? "selected" : "" %>>Bonus Action</option>
-            <option value="action" <%= spell.castingTime === 'action' ? "selected" : "" %>>Action</option>
-            <option value="one-minute" <%= spell.castingTime === 'one-minute' ? "selected" : "" %>>1 Minute</option>
-            <option value="other" <%= spell.castingTime === 'other' ? "selected" : "" %>>Other</option>
-        </select>
+        <div>
+            <label for="castingTime">Casting Time:</label>
+            <select id="castingTime" name="castingTime">
+                <option value="reaction" <%= spell.castingTime === 'reaction' ? "selected" : "" %>>Reaction</option>
+                <option value="bonus-action" <%= spell.castingTime === 'bonus-action' ? "selected" : "" %>>Bonus Action</option>
+                <option value="action" <%= spell.castingTime === 'action' ? "selected" : "" %>>Action</option>
+                <option value="one-minute" <%= spell.castingTime === 'one-minute' ? "selected" : "" %>>1 Minute</option>
+                <option value="other" <%= spell.castingTime === 'other' ? "selected" : "" %>>Other</option>
+            </select>
+        </div>
         <!-- verbal -->
-        <label for="verbalComponent">Verbal Component:</label>
-        <input type="checkbox" name="verbalComponent" id="verbalComponent" <% if(spell.verbalComponent) { %> checked <% } %>/>
+        <div>
+            <label for="verbalComponent">Verbal Component:</label>
+            <input type="checkbox" name="verbalComponent" id="verbalComponent" <% if(spell.verbalComponent) { %> checked <% } %>/>
+        </div>
         <!-- somatic -->
-        <label for="somaticComponent">Somatic Component:</label>
-        <input type="checkbox" name="somaticComponent" id="somaticComponent" <% if(spell.somaticComponent) { %> checked <% } %>/>
+        <div>
+            <label for="somaticComponent">Somatic Component:</label>
+            <input type="checkbox" name="somaticComponent" id="somaticComponent" <% if(spell.somaticComponent) { %> checked <% } %>/>
+        </div>
         <!-- material -->
-        <label for="materialComponent">Material Components:</label>
-        <input type="text" name="materialComponent" id="materialComponent" value="<%= spell.materialComponent %>"/>
+        <div>
+            <label for="materialComponent">Material Components:</label>
+            <input type="text" name="materialComponent" id="materialComponent" value="<%= spell.materialComponent %>"/>
+        </div>
         <!-- monetary -->
-        <label for="monetaryComponent">Monetary Components:</label>
-        <input type="text" name="monetaryComponent" id="monetaryComponent" value="<%= spell.monetaryComponent %>"/>
+        <div>
+            <label for="monetaryComponent">Monetary Components:</label>
+            <input type="text" name="monetaryComponent" id="monetaryComponent" value="<%= spell.monetaryComponent %>"/>
+        </div>
         <!-- duration -->
-        <label for="duration">Duration:</label>
-        <input type="text" name="duration" id="duration" value="<%= spell.duration %>"/>
+        <div>
+            <label for="duration">Duration:</label>
+            <input type="text" name="duration" id="duration" value="<%= spell.duration %>"/>
+        </div>
         <!-- range -->
-        <label for="range">Range (in feet):</label>
-        <input type="number" name="range" id="range" value="<%= spell.range %>"/>
+        <div>
+            <label for="range">Range (in feet):</label>
+            <input type="number" name="range" id="range" value="<%= spell.range %>"/>
+        </div>
         <!-- effect -->
-        <label for="effect">Effects:</label>
-        <textarea name="effect" id="effect"><%= spell.effect %></textarea>
+        <div>
+            <label for="effect">Effects:</label>
+            <textarea name="effect" id="effect"><%= spell.effect %></textarea>
+        </div>
         <!-- notes -->
-        <label for="notes">Notes:</label>
-        <textarea name="notes" id="notes"><%= spell.notes %></textarea>
+        <div>
+            <label for="notes">Notes:</label>
+            <textarea name="notes" id="notes"><%= spell.notes %></textarea>
+        </div>
         <!-- submit -->
-        <button type="submit">Edit Spell</button>
+        <button class="spell-submit-button" type="submit">Edit Spell</button>
     </form>
+</div>
 </body>
 </html>
