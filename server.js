@@ -111,7 +111,6 @@ app.post('/sign-up', async (req, res) => {
 app.get('/sign-out', (req, res) => {
     req.session.destroy()
     res.redirect('/')
-    //don't forget to build the sign-out button in the nav bar
 })
 
 //landing page
@@ -130,16 +129,6 @@ app.get('/', (req, res) => {
 app.use(isSignedIn)
 
 app.use('/players/:playerId/characters', charactersController)
-
-
-
-
-
-//characters controller
-    //spells controller will be inside the characters controller
-
-
-
 
 //------------------------------APP LISTENER------------------------------
 
