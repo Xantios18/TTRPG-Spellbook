@@ -114,9 +114,6 @@ app.get('/sign-out', (req, res) => {
 })
 
 //landing page
-
-
-
 app.get('/', (req, res) => {
     if(req.session.player) {
         res.redirect(`/players/${req.session.player._id}/characters`)
@@ -132,8 +129,8 @@ app.use('/players/:playerId/characters', charactersController)
 
 //------------------------------APP LISTENER------------------------------
 
-app.listen (PORT, () => {
-    console.log(`listening on port: ${PORT}`)
+app.listen (process.env.PORT, () => {
+    console.log(`listening on port: ${process.env.PORT}`)
 })
 
 
